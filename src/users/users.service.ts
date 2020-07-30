@@ -10,7 +10,7 @@ export class UsersService {
     return await this.USERS_REPOSITORY.findAll<User>();
   }
 
-  async findByPk(id: string): Promise<User> {
+  async findByPk(id: number): Promise<User> {
     return await this.USERS_REPOSITORY.findByPk<User>(id);
   }
 
@@ -20,13 +20,13 @@ export class UsersService {
     });
   }
 
-　async destroy(id: string){
+　async destroy(id: number){
     await this.USERS_REPOSITORY.destroy(
       {where: { id:id }}
     );
   }
 
-　async update(id: string, name:string){
+　async update(id: number, name:string){
     await this.USERS_REPOSITORY.update(
       {name: name},
       {where: {id: id} }

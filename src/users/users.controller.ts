@@ -16,7 +16,7 @@ export class UsersController {
 
   // Get /users/:id で対象idのレコードを取得
   @Get(':id')
-  getUser(@Param('id') id: string):  Promise<User> {
+  getUser(@Param('id') id: number):  Promise<User> {
     return this.UsersService.findByPk(id);
   }
 
@@ -28,13 +28,13 @@ export class UsersController {
 
   // Delete /users/:id で対象idのレコードを削除
   @Delete(':id')
-  userDestroy(@Param('id') id: string){
+  userDestroy(@Param('id') id: number){
     this.UsersService.destroy(id);
   }
 
   // Put /users/:id -d 'name=**' で対象idのnameを更新
   @Put(':id')
-  update(@Param('id') id:string , @Body('name') name:string){
+  update(@Param('id') id:number , @Body('name') name:string){
     this.UsersService.update(id,name);
   }
 

@@ -14,10 +14,8 @@ export class UsersService {
     return await this.USERS_REPOSITORY.findByPk<User>(id);
   }
 
-  async create() {
-    await this.USERS_REPOSITORY.create({
-      name:'new user'
-    });
+  async create(name: string) {
+    await this.USERS_REPOSITORY.create({ name });
   }
 
 　async destroy(id: number){
@@ -28,7 +26,7 @@ export class UsersService {
 
 　async update(id: number, name:string){
     await this.USERS_REPOSITORY.update(
-      {name: name},
+      {name},
       {where: {id: id} }
     );
   }

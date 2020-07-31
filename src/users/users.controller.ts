@@ -22,19 +22,19 @@ export class UsersController {
 
   // Post /users でレコードを追加（name:new user）
   @Post()
-  userCreate(){
-    this.UsersService.create();
+  userCreate(@Body("name") name: string){
+    this.UsersService.create({name});
   }
 
   // Delete /users/:id で対象idのレコードを削除
   @Delete(':id')
-  userDestroy(@Param('id') id: number){
+  userDestroy(@Param('id') id: string){
     this.UsersService.destroy(id);
   }
 
   // Put /users/:id -d 'name=**' で対象idのnameを更新
   @Put(':id')
-  update(@Param('id') id:number , @Body('name') name:string){
+  update(@Param('id') id: string, @Body('name') name:string){
     this.UsersService.update(id,name);
   }
 
